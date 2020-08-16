@@ -1,0 +1,44 @@
+
+<ion-content [fullscreen]="true">
+  
+
+  
+  <ion-card style="text-align: center;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 250px;
+  "> 
+    <ion-card-header>
+ 
+      <ion-card-title>Login</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onclick()">
+      <ion-item>
+       
+        <ion-label position="stacked" >Email</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked" >Password</ion-label>
+        <ion-input type="password"  formControlName="password"></ion-input>
+      </ion-item>
+      
+      <ion-button  style="margin-top:30px;
+        width: 120px;"color="primary" type="submit" [disabled]="!loginForm.valid">Login</ion-button>
+        <ion-text color="danger">
+          <h4>{{msg}}</h4>
+        </ion-text>
+   </form>
+   <ion-text color="primary">
+   <br>
+
+     <p  routerLink="/register" routerDirection="forward" style="outline: none; border: none;" >Register Now </p>
+  </ion-text>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

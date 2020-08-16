@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Post View  </ion-title>
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back-outline" (click)="dimiss()" style="width:50px; "></ion-icon>
+     
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <ion-card >
+ 
+
+      <ion-img ionImgViewer *ngIf="post.Image" [src]="post.Image" >
+ 
+ 
+ 
+      </ion-img>
+
+
+      
+     <ion-card-header>
+      <ion-card-subtitle>{{post.fullName}}</ion-card-subtitle>
+      <ion-card-title>{{post.titre}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    {{ post.text}}
+    </ion-card-content>
+ 
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header>
+      Freinds Reply
+    </ion-list-header>
+  <ion-item class="ion-activatable ripple-parent" *ngFor="let reply of replyData ; let i=index">
+  
+    <div>
+      <ion-avatar slot="start">
+          
+        <img [src]="reply.Image" (click)="viewProfil(reply.User)" >
+       
+      </ion-avatar>
+      <ion-label >
+        <h2>{{reply.fullName}}</h2>
+      </ion-label>
+    
+          <p>{{reply.Text}}
+          </p>
+     
+        </div>
+  
+  </ion-item>
+  
+  
+  </ion-list>
+  
+</ion-content>
+<ion-footer>
+  <ion-toolbar  color="primary">
+    <ion-button color="light" (click)="presentAlertPrompt()">
+    <ion-icon name="arrow-redo-outline"slot="start" size="large" style="margin-left : 30px; font-size: 60px;"></ion-icon>
+Reply</ion-button>
+<ion-button color="light" slot="end" (click)="setReply()" >
+  <ion-icon name="thumbs-up-outline" slot="start" size="large" style="margin-left : 30px; font-size: 60px;"></ion-icon>
+Like</ion-button>
+  </ion-toolbar>
+</ion-footer>
+<style>
+ p{
+   font-size: 12px;
+ }
+</style>

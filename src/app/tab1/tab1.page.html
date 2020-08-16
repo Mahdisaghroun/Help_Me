@@ -1,17 +1,77 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
+    <ion-title id="a0">
+      Home
     </ion-title>
+
+    <ion-fab-button style="background-color: transparent;"  id="a1" (click)="presentActionSheet()">
+      
+    
+    <ion-avatar>
+    
+      <img [src]="user.photoURL">
+    </ion-avatar>
+  </ion-fab-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-list-header>
+      Recent Posts
+    </ion-list-header>
+  <ion-item #item class="ion-activatable ripple-parent" 
+  *ngFor="let post of posts?.slice().reverse() ; let i=index;"
+ 
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+ >
+
+ 
+    <ion-avatar slot="start">
+
+     
+      <img [src]="post.imageUser" (click)="goToProfil(post.user)">
+    
+    </ion-avatar>
+    <ion-label  (click)=" showmodal(post)" >
+  
+      <h2 >{{post.fullName}}</h2>
+      <h3>{{post.titre}}</h3>
+      <p>{{post.text}}</p>
+     
+    </ion-label>
+   
+  </ion-item>
+ 
+
+ 
+</ion-list>
+
+  
+<ion-infinite-scroll threshold="30px" (ionInfinite)="loadMore($event)" >
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more posts...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+
 </ion-content>
+<style>
+  #a0,#a1{
+    
+ display: inline-table;
+ 
+  }
+  #a1{
+    width: 40px;
+    height: 40px;
+    float: right;
+  }
+  #a0{
+    margin-top: 10px;;
+  }
+</style>

@@ -1,0 +1,66 @@
+
+<ion-content [fullscreen]="true">
+  
+
+  
+  <ion-card style="text-align: center;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 250px;
+  "> 
+    <ion-card-header>
+ 
+      <ion-card-title>Register</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form [formGroup]="registerForm" (ngSubmit)="onclick()">
+      <ion-item>
+       
+        <ion-label position="stacked" >Email</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked" >First Name</ion-label>
+        <ion-input type="text"  formControlName="firstn"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked" >Last Name</ion-label>
+        <ion-input type="text"  formControlName="lastn"></ion-input>
+      </ion-item>
+      <ion-item>
+      <ion-label position="stacked" >Numéro D'inscription </ion-label>
+      <ion-input type="text"  formControlName="numE"></ion-input>
+    </ion-item>
+      <ion-item>
+        <ion-label position="stacked" >Password</ion-label>
+        <ion-input type="password"  formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <input type="file" (change)="uploadFile($event)" />
+  <div>{{ uploadPercent | async }}</div>
+ 
+  <div  [hidden]="!disabled">
+  <img   [hidden]="!disabled" [src]="downloadURL | async" style="width: 100px; height: 100px;">
+  <ion-input formControlName="Image" [value]="downloadURL | async" hidden></ion-input>
+  <ion-button (click)="deleteFile()">Delete</ion-button>
+  </div>
+      </ion-item>
+      <ion-button  style="margin-top:30px;
+        width: 120px;"color="primary" type="submit" [disabled]="!registerForm.valid">Register</ion-button>
+        <ion-text color="danger">
+          <h4>{{msg}}</h4>
+        </ion-text>
+   </form>
+   <ion-text color="primary">
+   <br>
+   <ion-spinner name="circles" [hidden]="!percentLoad"></ion-spinner>
+
+     <p routerLink="/login" routerDirection="root" style="outline: none; border: none;" >Log In Now </p>
+  </ion-text>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

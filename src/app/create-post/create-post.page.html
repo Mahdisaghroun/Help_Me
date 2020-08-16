@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>createPost</ion-title>
+  </ion-toolbar>
+
+
+
+</ion-header>
+<ion-content style="height: 1000px;">
+
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  
+  <ion-item>
+    <ion-label>Titre</ion-label>
+    <ion-input  ngModel name="titre"></ion-input>
+  </ion-item>
+ 
+  <ion-item>
+
+    <ion-label position="stacked">Text</ion-label>
+    <ion-textarea
+    ngModel
+    name="text"
+    >
+    </ion-textarea>
+  </ion-item>
+  <input type="file" (change)="uploadFile($event)" />
+  <div>{{ uploadPercent | async }}</div>
+  <ion-spinner name="circles" [hidden]="!percentLoad"></ion-spinner>
+  <div  [hidden]="!disabled">
+  <img   [hidden]="!disabled" [src]="downloadURL | async" style="width: 100px; height: 100px;">
+  <ion-input  ngModel name="Image" [value]="downloadURL | async" hidden></ion-input>
+  <ion-button (click)="deleteFile()">Delete</ion-button>
+  </div>
+  <ion-button type="submit" block>Post</ion-button>
+</form>
+
+</ion-content>

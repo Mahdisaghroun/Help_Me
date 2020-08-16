@@ -2,9 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
+
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
+    redirectTo: '/member/tab1',
+    pathMatch: 'full'
+  },
+ 
+  {
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -14,7 +21,12 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-          }
+          },
+          {path : 'showitem' , 
+          loadChildren: ()=>
+          import('../modal/modal.module').then(m => m.ModalPageModule)
+          
+        }
         ]
       },
       {
@@ -37,22 +49,15 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
-      }
+      
     ]
   },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
-  }
+  
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+
+exports: [RouterModule]
 })
 export class TabsPageRoutingModule {}

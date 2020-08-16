@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "693287257779",
+    "firebase_url": "https://test-4bb0a.firebaseio.com",
+    "project_id": "test-4bb0a",
+    "storage_bucket": "test-4bb0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693287257779:android:20202b5b72bff11122d2c6",
+        "android_client_info": {
+          "package_name": "com.isima.net"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693287257779-5e74al1ejq7kkt48foorgmq696i6q544.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBENOvmBSYpTZCFs8ibFIdddcU4araWA3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693287257779-5e74al1ejq7kkt48foorgmq696i6q544.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
